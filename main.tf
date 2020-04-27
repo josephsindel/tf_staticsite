@@ -28,7 +28,7 @@ resource "aws_s3_bucket" "website" {
 # The following resources generate an SSL certificate and
 # validate it.
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.domain_name
+  domain_name       = "*.${var.domain_name}"
   validation_method = "DNS"
 }
 
