@@ -13,7 +13,6 @@ variable "domain_name" {
 
 variable "cert_name" {
   description = "Valid DNS name of cert"
-  default = "${var.domain_name}"
   value = "*.${var.domain_name}"
 }
 
