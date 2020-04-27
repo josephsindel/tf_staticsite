@@ -11,6 +11,12 @@ variable "domain_name" {
   default     = "joesindel.com"
 }
 
+variable "cert_name" {
+  description = "Valid DNS name of cert"
+  default = "${var.domain_name}"
+  value = "*.${var.domain_name}"
+}
+
 variable "cdn_price_class" {
   default     = "PriceClass_100"
 }
