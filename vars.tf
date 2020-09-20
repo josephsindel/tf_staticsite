@@ -13,7 +13,7 @@ variable "domain_name" {
 
 variable "cert_name" {
   description = "Valid DNS name of cert"
-  default = "*.joesindel.com"
+  default = "joesindel.com"
 }
 
 variable "cdn_price_class" {
