@@ -30,7 +30,16 @@ resource "aws_s3_bucket" "website" {
 resource "aws_acm_certificate" "cert" {
   domain_name       = "*.${var.domain_name}"
   validation_method = "DNS"
+  subject_alternative_names = "${var.domain_name}"
 }
+
+resource "aws_acm_certificate" "example" {
+  domain_name               = "${var.domain}"
+  validation_method         = "DNS"
+  subject_alternative_names = "${var.san_domains}"
+}
+
+
 
 # Assumes that we already have the zone in route53.
 data "aws_route53_zone" "zone" {
