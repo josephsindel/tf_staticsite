@@ -74,7 +74,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   comment             = "CDN for ${var.site_bucket_name}"
   default_root_object = "index.html"
   price_class         = var.cdn_price_class
-  aliases             = ["*.${var.domain_name}"]
+  aliases             = ["*.${var.domain_name}","${var.domain_name}", "www.${var.domain_name}" ]
 
   # This can be used to block access to our content by geographic region.
   restrictions {
