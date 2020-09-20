@@ -57,8 +57,8 @@ resource "aws_acm_certificate_validation" "cert" {
 # This provides us with a ton of caching and therefore scale.
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    domain_name = aws_s3_bucket.website.website_endpoint
-    origin_id = var.domain_name
+    domain_name = var.domain_name
+    origin_id = aws_s3_bucket.website.website_endpoint
 
     custom_origin_config {
       origin_protocol_policy = "http-only"
@@ -73,7 +73,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   comment             = "CDN for ${var.site_bucket_name}"
   default_root_object = "index.html"
   price_class         = var.cdn_price_class
-  aliases             = ["${var.domain_name}"]
+  aliases             = ["*.${var.domain_name}"]
 
   # This can be used to block access to our content by geographic region.
   restrictions {
