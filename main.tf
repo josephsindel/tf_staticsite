@@ -58,7 +58,7 @@ resource "aws_acm_certificate_validation" "cert" {
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name = aws_s3_bucket.website.website_endpoint
-    origin_id = var.site_bucket_name
+    origin_id = "*.${var.domain_name}"
 
     custom_origin_config {
       origin_protocol_policy = "http-only"
