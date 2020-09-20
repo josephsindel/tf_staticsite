@@ -57,8 +57,8 @@ resource "aws_acm_certificate_validation" "cert" {
 # This provides us with a ton of caching and therefore scale.
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    domain_name = var.domain_name
-    origin_id = aws_s3_bucket.website.website_endpoint
+    domain_name = aws_s3_bucket.website.website_endpoint
+    origin_id = var.domain_name
 
     custom_origin_config {
       origin_protocol_policy = "http-only"
